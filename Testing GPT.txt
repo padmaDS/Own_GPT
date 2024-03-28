@@ -1,0 +1,68 @@
+Testing GPT:
+
+input token = 10, output token = 10
+
+prompt = 'add a cup of cold water and use an immersion'
+context = torch.tensor(encode(prompt, tokenizer), dtype=torch.long, device=device)
+generated_chars = (decode(model.generate(context.unsqueeze(0), max_new_tokens=10)[0], tokenizer))
+print(generated_chars)
+
+predicted10 = "blend to blend to a smooth consistency or transfer to"
+reference10 = "blender to blend to a smooth consistency or transfer to"
+
+bleu_scores = bleu_metric.compute(predictions=[predicted10.split(' ')],references=[[reference10.split(' ')]])
+print(bleu_scores)
+
+{'bleu': 0.8801117367933934, 'precisions': [0.9, 0.8888888888888888, 0.875, 0.8571428571428571], 'brevity_penalty': 1.0, 'length_ratio': 1.0, 'translation_length': 10, 'reference_length': 10}
+
+Input = 10, output = 20
+
+prompt = 'Transfer the mixture into a deep bowl and knead into'
+context = torch.tensor(encode(prompt, tokenizer), dtype=torch.long, device=device)
+generated_chars20 = (decode(model.generate(context.unsqueeze(0), max_new_tokens=20)[0], tokenizer))
+print(generated_chars20)
+
+predicted20 = "a soft dough using 1 to 2 tbsp of water if needed. 3. divide the dough into"
+reference20 = "a soft dough using 1 to 2 tbsp of water if needed.3. Divide the dough into 7 equal portions.4. Take "
+
+bleu_scores20 = bleu_metric.compute(predictions=[predicted20.split(' ')],references=[[reference20.split(' ')]])
+print(bleu_scores)
+
+{'bleu': 0.8801117367933934, 'precisions': [0.9, 0.8888888888888888, 0.875, 0.8571428571428571], 'brevity_penalty': 1.0, 'length_ratio': 1.0, 'translation_length': 10, 'reference_length': 10}
+
+input = 10, output = 30
+
+prompt = 'Heat a non-stick tava (griddle) on a medium flame'
+context = torch.tensor(encode(prompt, tokenizer), dtype=torch.long, device=device)
+generated_chars30 = (decode(model.generate(context.unsqueeze(0), max_new_tokens=30)[0], tokenizer))
+print(generated_chars30)
+
+predicted30 = "and when hot, place the jowar roti gently over it. 6. cook it till small blisters appear on the surface. turn over"
+reference30 = "and when hot, place the jowar roti gently over it. 6. Cook it till small blisters appear on the surface. Turn over the jowar roti and cook for few more"
+
+bleu_scores30 = bleu_metric.compute(predictions=[predicted30.split(' ')],references=[[reference30.split(' ')]])
+print(bleu_scores30)
+
+{'bleu': 0.5516251361914665, 'precisions': [0.9545454545454546, 0.8095238095238095, 0.75, 0.6842105263157895], 'brevity_penalty': 0.6951439283988786, 'length_ratio': 0.7333333333333333, 'translation_length': 22, 'reference_length': 30}
+
+input 10 , output = 40
+
+prompt = 'Blend avocado and the fried onion, garlic and chilli mix'
+context = torch.tensor(encode(prompt, tokenizer), dtype=torch.long, device=device)
+generated_chars40 = (decode(model.generate(context.unsqueeze(0), max_new_tokens=40)[0], tokenizer))
+print(generated_chars40)
+
+predicted40 = """with % cup of rice flour to the same bowl. * add red chilli powder, coriander powder, cumin powder, cayenne, turmeric and kasoori methi"""
+reference40 = """with % cup of water in a blender.Pour the puree into the pan and add salt and the remaining water and let it
+boil in low flame.Switch of the gas once you see the soup becoming frothy."""
+
+bleu_scores40 = bleu_metric.compute(predictions=[predicted40.split(' ')],references=[[reference40.split(' ')]])
+print(bleu_scores40)
+
+{'bleu': 0.06870997939870345, 'precisions': [0.2916666666666667, 0.13043478260869565, 0.09090909090909091, 0.047619047619047616], 'brevity_penalty': 0.6065306597126334, 'length_ratio': 0.6666666666666666, 'translation_length': 24, 'reference_length': 36}
+
+
+
+
+
+

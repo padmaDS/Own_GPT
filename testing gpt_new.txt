@@ -1,0 +1,99 @@
+prompt1 = 'In a bowl, add grated carrot, onion pieces, coriander, ginger pieces'
+context = torch.tensor(encode(prompt1, tokenizer), dtype=torch.long, device=device)
+generated_chars1 = (decode(m.generate(context.unsqueeze(0), max_new_tokens=10)[0], tokenizer))
+print(generated_chars1)
+
+predicted1 = "green chilies pieces, cumin seeds"
+reference1 = "green chilies pieces, cumin seeds, mix well and keep aside"
+
+bleu_scores1 = bleu_metric.compute(predictions=[predicted1.split(' ')],references=[[reference1.split(' ')]])
+print(bleu_scores1)
+
+prompt2 = 'add a cup of cold water and use an immersion'
+context = torch.tensor(encode(prompt2, tokenizer), dtype=torch.long, device=device)
+generated_chars = (decode(m.generate(context.unsqueeze(0), max_new_tokens=20)[0], tokenizer))
+print(generated_chars)
+
+predicted2 = "blend to blend to a smooth consistency or transfer to a blender and blend into a very smooth paste"
+reference2 = "blender to blend to a smooth consistency or transfer to a blender and blend into a very smooth paste. Use"
+
+bleu_scores2 = bleu_metric.compute(predictions=[predicted2.split(' ')],references=[[reference2.split(' ')]])
+print(bleu_scores2)
+
+
+prompt3 = 'Transfer the mixture into a deep bowl and knead into'
+context = torch.tensor(encode(prompt3, tokenizer), dtype=torch.long, device=device)
+generated_chars3 = (decode(m.generate(context.unsqueeze(0), max_new_tokens=30)[0], tokenizer))
+print(generated_chars3)
+
+predicted3 = "a soft dough using 1 to 2 tbsp of water if needed. 3. divide the dough into 7 equal portions. 4. take a portion the"
+reference3 = "a soft dough using 1 to 2 tbsp of water if needed. 3. Divide the dough into 7 equal portions.4. Take a portion the dough, flatten it slightly and place"
+
+bleu_scores3 = bleu_metric.compute(predictions=[predicted3.split(' ')],references=[[reference3.split(' ')]])
+print(bleu_scores3)
+
+prompt4 = 'Heat a non-stick tava (griddle) on a medium flame'
+context = torch.tensor(encode(prompt4, tokenizer), dtype=torch.long, device=device)
+generated_chars4 = (decode(model.generate(context.unsqueeze(0), max_new_tokens=40)[0], tokenizer))
+print(generated_chars4)
+
+predicted4 = "and when hot, place the jowar roti gently over it. 6. cook it till small blisters appear on the surface. turn over the jowar roti and cook for few more"
+reference4 = "and when hot, place the jowar roti gently over it. 6. Cook it till small blisters appear on the surface. Turn over the jowar roti and cook for few more seconds. 7. Cook the jowar roti on an open flame"
+
+bleu_scores4 = bleu_metric.compute(predictions=[predicted4.split(' ')],references=[[reference4.split(' ')]])
+print(bleu_scores4)
+
+prompt5 = 'Blend avocado and the fried onion, garlic and chilli mix'
+context = torch.tensor(encode(prompt5, tokenizer), dtype=torch.long, device=device)
+generated_chars5 = (decode(model.generate(context.unsqueeze(0), max_new_tokens=50)[0], tokenizer))
+print(generated_chars5)
+
+predicted5 = "with % cup of water in a blender. pour the puree into the pan and add salt and the remaining water and let it boil in low flame. switch of the gas once they start to splutter, add onions in the pan."
+reference5 = "with % cup of water in a blender. Pour the puree into the pan and add salt and the remaining water and let it boil in low flame. Switch of the gas once you see the soup becoming frothy. Take a hand mortar, add 1 spoon of olive oil and"
+
+bleu_scores5 = bleu_metric.compute(predictions=[predicted5.split(' ')],references=[[reference5.split(' ')]])
+print(bleu_scores5)
+
+prompt6 = 'To make quick paneer sabzi, combine the red chillies and'
+context = torch.tensor(encode(prompt6, tokenizer), dtype=torch.long, device=device)
+generated_chars6 = (decode(model.generate(context.unsqueeze(0), max_new_tokens=60)[0], tokenizer))
+print(generated_chars6)
+
+predicted6 = "coriander seeds in 8 sy esr ge a small broad non - stick pan and dry roast on a slow flame for 1 minute. keep aside to cool slightly. 2. blend in a mixer to a smooth fine powder and keep aside. 3. heat the oil in a non - stick ka"
+reference6 = "coriander seeds in 8 Sy esr Ge a small broad non-stick pan and dry roast on a slow flame for 1 minute. Keep aside to cool slightly. 2. Blend in a mixer to a smooth fine powder and keep aside. 3. Heat the oil in a non-stick kadhai and add the cumin seeds. 4. When the seeds crackle,"
+
+bleu_scores6 = bleu_metric.compute(predictions=[predicted6.split(' ')],references=[[reference6.split(' ')]])
+print(bleu_scores6)
+
+prompt7 = 'Season chicken on both sides with salt and pepper. Heat'
+context = torch.tensor(encode(prompt7, tokenizer), dtype=torch.long, device=device)
+generated_chars7 = (decode(m.generate(context.unsqueeze(0), max_new_tokens=70)[0], tokenizer))
+print(generated_chars7)
+
+predicted7 = "olive oil in a heavy skillet over medium - high heat. 2. add in cooking oil and saute until hot the butter and oil bit of butter or until broccoli gets cooked but still crunchy. 7. * pulse chicken directions — 7. = = = a a ni e chickenw relivhealthy. com n"
+reference7 = "olive oil in a heavy skillet over medium- high heat until it starts to shimmer. Place chicken breasts skin-side down in the skillet. Sprinkle with fresh herbs. Cook until the bottoms are well seared and golden brown, 5 to We Flip chicken breasts over and continue cooking until an instant-read thermometer inserted into the center of a breast reads 150 degrees F (66 degrees C), about 5 minutes."
+
+bleu_scores7 = bleu_metric.compute(predictions=[predicted7.split(' ')],references=[[reference7.split(' ')]])
+print(bleu_scores7)
+
+prompt8 = 'Flip chicken breasts over and continue cooking until an'
+context = torch.tensor(encode(prompt8, tokenizer), dtype=torch.long, device=device)
+generated_chars8 = (decode(m.generate(context.unsqueeze(0), max_new_tokens=80)[0], tokenizer))
+print(generated_chars8)
+
+predicted8 = "instant - read thermometer inserted into the center of a breast reads 150 degrees f ( 66 degrees c ), about 5 minutes. add lemon zest and season with salt and ’ pepper * we specialize in remission / reversal of diabetes and obesity along with psychology counselling ms “ hi reliv healthy @ fra © i | “ relivhere * we specialize in re"
+reference8 = "instant-read thermometer inserted into the center of a breast reads 150 degrees F (66 degrees C), about 5 minutes. Add vinegar and cold butter to the pan with chicken. Shake the pan gently until butter melts and the internal temperature of chicken reads at least 165 degrees F (74 degrees C), 2to3 eee ae Stir in 1 tablespoon chicken broth to thin sauce *We Specialize in Remission/ Reversal of Diabetes and Obesity along with Psychology Counselling Easy Glazed Salmon"
+
+bleu_scores8 = bleu_metric.compute(predictions=[predicted8.split(' ')],references=[[reference8.split(' ')]])
+print(bleu_scores8)
+
+prompt9 = 'boneless skinless chicken breasts, diced into 1 inch cubes olive'
+context = torch.tensor(encode(prompt9, tokenizer), dtype=torch.long, device=device)
+generated_chars9 = (decode(m.generate(context.unsqueeze(0), max_new_tokens=90)[0], tokenizer))
+print(generated_chars9)
+
+predicted9 = "oil cup low - sodium soy sauce cup water honey packed light brown } combine the brown sugar rice at least 1 piece and water 4 tsp black pepper., add the mint and put sauce. this 4 a slotted spoon vegetable or lolo — milk 10mins in a paste. bowl and season the right temperature of butter or bit of butter or butter or until sauce in a large skillet over medium heat. add the oil and the butter."
+reference9 = " oil cup low-sodium soy sauce cup water honey packed light brown sugar rice vinegar toasted sesame oil peeled and minced fresh ginger peeled and minced fresh garlic (2 cloves) Small amount of starch Sesame seeds and chopped green onions, for serving (optional) B www.relivhealthy.com @O 9000767060 Instructions 1. Heat olive oil ina 12-inch non-stick skillet over medium-high heat. 2. Add in chicken and let brown on bottom about 3 -4 minutes then flip and continue to cook until center registers about 160 degrees" 
+
+bleu_scores9 = bleu_metric.compute(predictions=[predicted9.split(' ')],references=[[reference9.split(' ')]])
+print(bleu_scores9)
